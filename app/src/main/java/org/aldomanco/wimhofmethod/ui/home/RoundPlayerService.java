@@ -3,6 +3,7 @@ package org.aldomanco.wimhofmethod.ui.home;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.Binder;
 import android.os.IBinder;
 import android.provider.Settings;
 
@@ -15,14 +16,10 @@ public class RoundPlayerService extends Service {
     //creating a mediaplayer object
     private MediaPlayer player;
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
+    IBinder mBinder = new LocalBinder();
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public IBinder onBind(Intent intent) {
 
         if ((int)intent.getExtras().get("remaining") == 0){
             player = MediaPlayer.create(this,
@@ -44,11 +41,49 @@ public class RoundPlayerService extends Service {
         //staring the player
         player.start();
 
-        //we have some options for service
-        //start sticky means service will be explicity started and stopped
-        return START_STICKY;
+        return mBinder;
     }
 
+    public class LocalBinder extends Binder {
+        public RoundPlayerService getServerInstance() {
+            return RoundPlayerService.this;
+        }
+    }
+
+    public boolean isPlaying(){
+        return player.isPlaying();
+    }
+
+    public void pauseMediaPlayer(){
+
+        try{
+            if (player.isPlaying()) {
+                player.pause();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void resumeMediaPlayer(){
+
+        try{
+            if (!player.isPlaying()) {
+                player.start();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+
+        //stopping the player when service is destroyed
+        player.stop();
+
+        return super.onUnbind(intent);
+    }
 
     @Override
     public void onDestroy() {

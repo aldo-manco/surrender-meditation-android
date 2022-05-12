@@ -11,15 +11,15 @@ import org.aldomanco.wimhofmethod.R;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private MutableLiveData<String> textRunningRounds;
 
     public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("No Round Done");
+        textRunningRounds = new MutableLiveData<>();
+        textRunningRounds.setValue("No Round Done");
     }
 
     public LiveData<String> getText() {
-        return mText;
+        return textRunningRounds;
     }
 
     public void setTextView(int numberOfRounds, View view){
@@ -29,7 +29,7 @@ public class HomeViewModel extends ViewModel {
             case R.id.layout:
             case R.id.text_home:
 
-                mText.setValue("Round " + numberOfRounds + " in progress");
+                textRunningRounds.setValue("Round " + numberOfRounds + " in progress");
 
                 break;
         }
@@ -42,7 +42,7 @@ public class HomeViewModel extends ViewModel {
             case R.id.layout:
             case R.id.text_home:
 
-                mText.setValue("Round " + numberOfRounds + " has been stopped");
+                textRunningRounds.setValue("Round " + numberOfRounds + " has been stopped");
 
                 break;
         }

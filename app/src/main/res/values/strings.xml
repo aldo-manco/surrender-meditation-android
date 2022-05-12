@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Wim Hof Method</string>
-    <string name="title_home">Breathing</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">Inner Power</string>
+    <string name="title_wim_hof_breath">Wim Hof Breath</string>
+    <string name="title_yoga">Yoga</string>
+    <string name="title_prana_breath">Prana Breath</string>
+    <string name="title_meditation">Meditation</string>
 </resources>

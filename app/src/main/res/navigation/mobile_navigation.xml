@@ -7,19 +7,20 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="org.aldomanco.wimhofmethod.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="org.aldomanco.wimhofmethod.ui.wim_hof_breath_section.WimHofBreathFragment"
+        android:label="@string/title_wim_hof_breath"
+        tools:layout="@layout/fragment_wim_hof_breath_section" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="org.aldomanco.wimhofmethod.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="org.aldomanco.wimhofmethod.ui.yoga_section.YogaFragment"
+        android:label="@string/title_yoga"
+        tools:layout="@layout/fragment_yoga_section" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="org.aldomanco.wimhofmethod.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="org.aldomanco.wimhofmethod.ui.prana_breath_section.PranaBreathFragment"
+        android:label="@string/title_prana_breath"
+        tools:layout="@layout/fragment_prana_breath_section" />
+
 </navigation>

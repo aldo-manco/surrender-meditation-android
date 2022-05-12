@@ -1,6 +1,5 @@
-package org.aldomanco.wimhofmethod.ui.home;
+package org.aldomanco.wimhofmethod.ui.wim_hof_breath_section;
 
-import android.content.Intent;
 import android.view.View;
 
 import androidx.lifecycle.LiveData;
@@ -9,11 +8,11 @@ import androidx.lifecycle.ViewModel;
 
 import org.aldomanco.wimhofmethod.R;
 
-public class HomeViewModel extends ViewModel {
+public class WimHofBreathViewModel extends ViewModel {
 
     private MutableLiveData<String> textRunningRounds;
 
-    public HomeViewModel() {
+    public WimHofBreathViewModel() {
         textRunningRounds = new MutableLiveData<>();
         textRunningRounds.setValue("No Round Done");
     }

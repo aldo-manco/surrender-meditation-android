@@ -1,4 +1,4 @@
-package org.aldomanco.wimhofmethod.ui.notifications;
+package org.aldomanco.wimhofmethod.ui.prana_breath_section;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,24 +12,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import org.aldomanco.wimhofmethod.R;
-import org.aldomanco.wimhofmethod.databinding.FragmentNotificationsBinding;
+import org.aldomanco.wimhofmethod.databinding.FragmentPranaBreathSectionBinding;
 
-public class NotificationsFragment extends Fragment {
+public class PranaBreathFragment extends Fragment {
 
-    private NotificationsViewModel notificationsViewModel;
-    private FragmentNotificationsBinding binding;
+    private PranaBreathViewModel pranaBreathViewModel;
+    private FragmentPranaBreathSectionBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+        pranaBreathViewModel =
+                new ViewModelProvider(this).get(PranaBreathViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentPranaBreathSectionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        pranaBreathViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

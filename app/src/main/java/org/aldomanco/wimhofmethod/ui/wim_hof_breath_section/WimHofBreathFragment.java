@@ -1,4 +1,4 @@
-package org.aldomanco.wimhofmethod.ui.home;
+package org.aldomanco.wimhofmethod.ui.wim_hof_breath_section;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,17 +19,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.material.button.MaterialButtonToggleGroup;
-
 import org.aldomanco.wimhofmethod.R;
-import org.aldomanco.wimhofmethod.databinding.FragmentHomeBinding;
+import org.aldomanco.wimhofmethod.databinding.FragmentWimHofBreathSectionBinding;
 
 import static android.content.Context.BIND_AUTO_CREATE;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class WimHofBreathFragment extends Fragment implements View.OnClickListener {
 
-    private HomeViewModel homeViewModel;
-    private FragmentHomeBinding binding;
+    private WimHofBreathViewModel wimHofBreathViewModel;
+    private FragmentWimHofBreathSectionBinding binding;
     private int numberOfRounds;
 
     private Intent startFirstRound;
@@ -49,9 +46,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     boolean secondServiceBounded;
     boolean thirdServiceBounded;
 
-    RoundPlayerService firstService;
-    RoundPlayerService secondService;
-    RoundPlayerService thirdService;
+    WimHofBreathService firstService;
+    WimHofBreathService secondService;
+    WimHofBreathService thirdService;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -64,9 +61,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         secondServiceBounded = false;
         thirdServiceBounded = false;
 
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        wimHofBreathViewModel = new ViewModelProvider(this).get(WimHofBreathViewModel.class);
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentWimHofBreathSectionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         textView = binding.textHome;
@@ -74,7 +71,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         buttonStopRound = binding.buttonStopRound;
         buttonPauseRound = binding.buttonPauseRound;
 
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        wimHofBreathViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
@@ -104,7 +101,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.text_home:
 
                 numberOfRounds++;
-                homeViewModel.setTextView(numberOfRounds, textView);
+                wimHofBreathViewModel.setTextView(numberOfRounds, textView);
 
                 int remaining = numberOfRounds % 3;
                 stopPressed = false;
@@ -122,7 +119,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             thirdServiceBounded = false;
                         }
 
-                        startFirstRound = new Intent(getActivity(), RoundPlayerService.class);
+                        startFirstRound = new Intent(getActivity(), WimHofBreathService.class);
                         startFirstRound.putExtra("remaining", 0);
                         getActivity().bindService(startFirstRound, firstConnection, BIND_AUTO_CREATE);
 
@@ -131,7 +128,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                     case 2:
 
                         if (firstServiceBounded) {
-                            Toast.makeText(getActivity(), "ww", Toast.LENGTH_LONG).show();
                             getActivity().unbindService(firstConnection);
                             firstServiceBounded = false;
                         }
@@ -140,7 +136,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             thirdServiceBounded = false;
                         }
 
-                        startSecondRound = new Intent(getActivity(), RoundPlayerService.class);
+                        startSecondRound = new Intent(getActivity(), WimHofBreathService.class);
                         startSecondRound.putExtra("remaining", 1);
                         getActivity().bindService(startSecondRound, secondConnection, BIND_AUTO_CREATE);
 
@@ -159,7 +155,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                             secondServiceBounded = false;
                         }
 
-                        startThirdRound = new Intent(getActivity(), RoundPlayerService.class);
+                        startThirdRound = new Intent(getActivity(), WimHofBreathService.class);
                         startThirdRound.putExtra("remaining", 2);
                         getActivity().bindService(startThirdRound, thirdConnection, BIND_AUTO_CREATE);
 
@@ -185,7 +181,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                         thirdServiceBounded = false;
                     }
 
-                    homeViewModel.stopTextView(numberOfRounds, textView);
+                    wimHofBreathViewModel.stopTextView(numberOfRounds, textView);
                     numberOfRounds--;
 
                     stopPressed = true;
@@ -242,7 +238,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             firstServiceBounded = true;
-            RoundPlayerService.LocalBinder firstLocalBinder = (RoundPlayerService.LocalBinder) service;
+            WimHofBreathService.LocalBinder firstLocalBinder = (WimHofBreathService.LocalBinder) service;
             firstService = firstLocalBinder.getServerInstance();
         }
     };
@@ -258,7 +254,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             secondServiceBounded = true;
-            RoundPlayerService.LocalBinder secondLocalBinder = (RoundPlayerService.LocalBinder) service;
+            WimHofBreathService.LocalBinder secondLocalBinder = (WimHofBreathService.LocalBinder) service;
             secondService = secondLocalBinder.getServerInstance();
         }
     };
@@ -274,7 +270,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             thirdServiceBounded = true;
-            RoundPlayerService.LocalBinder thirdLocalBinder = (RoundPlayerService.LocalBinder) service;
+            WimHofBreathService.LocalBinder thirdLocalBinder = (WimHofBreathService.LocalBinder) service;
             thirdService = thirdLocalBinder.getServerInstance();
         }
     };

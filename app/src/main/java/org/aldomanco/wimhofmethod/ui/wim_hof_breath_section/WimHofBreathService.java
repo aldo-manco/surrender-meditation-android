@@ -1,17 +1,14 @@
-package org.aldomanco.wimhofmethod.ui.home;
+package org.aldomanco.wimhofmethod.ui.wim_hof_breath_section;
 
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
-import android.provider.Settings;
-
-import androidx.annotation.Nullable;
 
 import org.aldomanco.wimhofmethod.R;
 
-public class RoundPlayerService extends Service {
+public class WimHofBreathService extends Service {
 
     //creating a mediaplayer object
     private MediaPlayer player;
@@ -45,8 +42,8 @@ public class RoundPlayerService extends Service {
     }
 
     public class LocalBinder extends Binder {
-        public RoundPlayerService getServerInstance() {
-            return RoundPlayerService.this;
+        public WimHofBreathService getServerInstance() {
+            return WimHofBreathService.this;
         }
     }
 

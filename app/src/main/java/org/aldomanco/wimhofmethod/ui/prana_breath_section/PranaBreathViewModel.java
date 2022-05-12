@@ -1,14 +1,14 @@
-package org.aldomanco.wimhofmethod.ui.notifications;
+package org.aldomanco.wimhofmethod.ui.prana_breath_section;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class NotificationsViewModel extends ViewModel {
+public class PranaBreathViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public NotificationsViewModel() {
+    public PranaBreathViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is notifications fragment");
     }

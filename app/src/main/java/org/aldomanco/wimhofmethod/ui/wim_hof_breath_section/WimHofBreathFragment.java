@@ -274,24 +274,4 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
             thirdService = thirdLocalBinder.getServerInstance();
         }
     };
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        if (firstServiceBounded) {
-            getActivity().unbindService(firstConnection);
-            firstServiceBounded = false;
-
-        } else if (secondServiceBounded) {
-            getActivity().unbindService(secondConnection);
-            secondServiceBounded = false;
-
-        } else if (thirdServiceBounded) {
-            getActivity().unbindService(thirdConnection);
-            thirdServiceBounded = false;
-        }
-    }
-
-    ;
 }

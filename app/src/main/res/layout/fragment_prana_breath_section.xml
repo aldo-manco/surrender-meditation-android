@@ -53,12 +53,11 @@
         android:layout_marginBottom="388dp"
         android:text="19:12"
         android:textAppearance="@style/TextAppearance.AppCompat.Button"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="48sp"
         android:translationZ="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <GridLayout

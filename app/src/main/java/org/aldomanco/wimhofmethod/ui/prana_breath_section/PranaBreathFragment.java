@@ -104,12 +104,12 @@ public class PranaBreathFragment extends Fragment implements View.OnClickListene
             background.setImageResource(R.drawable.morning);
             sectionTimeLeft.setBackgroundColor(getResources().getColor(R.color.white));
             sectionSeekBar.setBackgroundColor(getResources().getColor(R.color.white));
-            timeLeft.setTextColor(getResources().getColor(R.color.black));
+            timeLeft.setTextColor(getResources().getColor(R.color.white));
         } else {
             background.setImageResource(R.drawable.sunset);
             sectionTimeLeft.setBackgroundColor(getResources().getColor(R.color.orange));
             sectionSeekBar.setBackgroundColor(getResources().getColor(R.color.orange));
-            timeLeft.setTextColor(getResources().getColor(R.color.black));
+            timeLeft.setTextColor(getResources().getColor(R.color.white));
         }
 
         setTimer.setMax(1152);

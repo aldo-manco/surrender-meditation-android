@@ -27,7 +27,7 @@
         android:id="@+id/buttonPauseRound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="12dp"
         android:text="PAUSE ROUND"
         app:layout_constraintBottom_toTopOf="@id/buttonStopRound"
         app:layout_constraintEnd_toEndOf="parent"

@@ -16,9 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import org.aldomanco.wimhofmethod.MainActivity;
 import org.aldomanco.wimhofmethod.R;
 import org.aldomanco.wimhofmethod.databinding.FragmentWimHofBreathSectionBinding;
 
@@ -28,7 +31,6 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
 
     private WimHofBreathViewModel wimHofBreathViewModel;
     private FragmentWimHofBreathSectionBinding binding;
-    private int numberOfRounds;
 
     private Intent startFirstRound;
     private Intent startSecondRound;
@@ -53,7 +55,6 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        numberOfRounds = 0;
         stopPressed = false;
         isPaused = false;
 
@@ -93,6 +94,29 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
     }
 
     @Override
+    public void onDetach() {
+        super.onDetach();
+
+        if (firstServiceBounded) {
+            getActivity().unbindService(firstConnection);
+            firstServiceBounded = false;
+
+        } else if (secondServiceBounded) {
+            getActivity().unbindService(secondConnection);
+            secondServiceBounded = false;
+
+        } else if (thirdServiceBounded) {
+            getActivity().unbindService(thirdConnection);
+            thirdServiceBounded = false;
+        }
+
+        FragmentManager manager = ((Fragment) this).getFragmentManager();
+        FragmentTransaction trans = manager.beginTransaction();
+        trans.remove((Fragment) this);
+        trans.commit();
+    }
+
+    @Override
     public void onClick(View view) {
 
         switch (view.getId()) {
@@ -100,10 +124,10 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
             case R.id.layout:
             case R.id.text_home:
 
-                numberOfRounds++;
-                wimHofBreathViewModel.setTextView(numberOfRounds, textView);
+                MainActivity.numberOfRounds++;
+                wimHofBreathViewModel.setTextView(MainActivity.numberOfRounds, textView);
 
-                int remaining = numberOfRounds % 3;
+                int remaining = MainActivity.numberOfRounds % 3;
                 stopPressed = false;
 
                 switch (remaining) {
@@ -145,12 +169,10 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
                     case 0:
 
                         if (firstService != null && firstService.isPlaying()) {
-                            getActivity().stopService(startFirstRound);
                             getActivity().unbindService(firstConnection);
                             firstServiceBounded = false;
                         }
                         if (secondService != null && secondService.isPlaying()) {
-                            getActivity().stopService(startSecondRound);
                             getActivity().unbindService(secondConnection);
                             secondServiceBounded = false;
                         }
@@ -181,8 +203,8 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
                         thirdServiceBounded = false;
                     }
 
-                    wimHofBreathViewModel.stopTextView(numberOfRounds, textView);
-                    numberOfRounds--;
+                    wimHofBreathViewModel.stopTextView(MainActivity.numberOfRounds, textView);
+                    MainActivity.numberOfRounds--;
 
                     stopPressed = true;
                 }

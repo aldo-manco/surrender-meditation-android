@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:id="@+id/navigation_wim_hof_method"
+        android:icon="@drawable/ic_wim_hof_inner_power"
         android:title="@string/title_wim_hof_breath" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:id="@+id/navigation_yoga"
+        android:icon="@drawable/ic_yoga"
         android:title="@string/title_yoga" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:id="@+id/navigation_prana_breath"
+        android:icon="@drawable/ic_prana_breath"
         android:title="@string/title_prana_breath" />
 
 </menu>

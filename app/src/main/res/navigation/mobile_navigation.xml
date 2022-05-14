@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_wim_hof_method">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_wim_hof_method"
         android:name="org.aldomanco.wimhofmethod.ui.wim_hof_breath_section.WimHofBreathFragment"
         android:label="@string/title_wim_hof_breath"
         tools:layout="@layout/fragment_wim_hof_breath_section" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_yoga"
         android:name="org.aldomanco.wimhofmethod.ui.yoga_section.YogaFragment"
         android:label="@string/title_yoga"
         tools:layout="@layout/fragment_yoga_section" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_prana_breath"
         android:name="org.aldomanco.wimhofmethod.ui.prana_breath_section.PranaBreathFragment"
         android:label="@string/title_prana_breath"
         tools:layout="@layout/fragment_prana_breath_section" />

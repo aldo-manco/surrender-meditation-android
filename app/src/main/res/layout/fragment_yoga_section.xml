@@ -6,6 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".ui.yoga_section.YogaFragment">
 
+    <ImageView
+        android:id="@+id/playShortSession"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#00ffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_dashboard" />
+
+    <ImageView
+        android:id="@+id/playLongSession"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toTopOf="@id/text_dashboard"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/text_dashboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_dashboard">
+
+        <Button
+            android:id="@+id/buttonPauseYoga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAUSE SESSION" />
+
+        <Button
+            android:id="@+id/buttonStopYoga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" STOP SESSION " />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/text_dashboard"
         android:layout_width="match_parent"
@@ -15,6 +54,7 @@
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

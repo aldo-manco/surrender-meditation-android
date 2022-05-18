@@ -10,17 +10,42 @@
         android:id="@+id/playShortSession"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#00ffff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="@id/text_dashboard" />
+        android:background="#42a79e"
+        app:layout_constraintBottom_toTopOf="@id/text_dashboard"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/playLongSession"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#ffffff"
-        app:layout_constraintBottom_toTopOf="@id/text_dashboard"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="#022055"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_dashboard"/>
+
+    <TextView
+        android:id="@+id/textRecoveryYogaShort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RECOVERY YOGA - SHORT VERSION"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/playShortSession"
+        app:layout_constraintEnd_toEndOf="@+id/playShortSession"
+        app:layout_constraintStart_toStartOf="@+id/playShortSession"
+        app:layout_constraintTop_toTopOf="@+id/playShortSession" />
+
+    <TextView
+        android:id="@+id/textRecoveryYogaLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RECOVERY YOGA - EXTENDED VERSION"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/playLongSession"
+        app:layout_constraintEnd_toEndOf="@+id/playLongSession"
+        app:layout_constraintStart_toStartOf="@+id/playLongSession"
+        app:layout_constraintTop_toTopOf="@+id/playLongSession" />
 
     <LinearLayout
         android:layout_width="wrap_content"

@@ -184,6 +184,8 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
                         break;
                 }
 
+                Toast.makeText(getActivity(), "Starting Breathing Cycle",Toast.LENGTH_SHORT).show();
+
                 break;
 
             case R.id.buttonStopRound:
@@ -203,6 +205,8 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
                         thirdServiceBounded = false;
                     }
 
+                    Toast.makeText(getActivity(), "Stopped Breathing Cycle",Toast.LENGTH_SHORT).show();
+
                     wimHofBreathViewModel.stopTextView(MainActivity.numberOfRounds, textView);
                     MainActivity.numberOfRounds--;
 
@@ -218,9 +222,11 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
                     if (firstService.isPlaying()){
                         buttonPauseRound.setText("RESUME ROUND");
                         firstService.pauseMediaPlayer();
+                        Toast.makeText(getActivity(), "Paused Breathing Cycle",Toast.LENGTH_SHORT).show();
                     }else {
                         buttonPauseRound.setText("PAUSE ROUND");
                         firstService.resumeMediaPlayer();
+                        Toast.makeText(getActivity(), "Resumed Breathing Cycle",Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (secondServiceBounded) {
@@ -228,9 +234,11 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
                     if (secondService.isPlaying()){
                         buttonPauseRound.setText("RESUME ROUND");
                         secondService.pauseMediaPlayer();
+                        Toast.makeText(getActivity(), "Paused Breathing Cycle",Toast.LENGTH_SHORT).show();
                     }else {
                         buttonPauseRound.setText("PAUSE ROUND");
                         secondService.resumeMediaPlayer();
+                        Toast.makeText(getActivity(), "Resumed Breathing Cycle",Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (thirdServiceBounded) {
@@ -238,9 +246,11 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
                     if (thirdService.isPlaying()){
                         buttonPauseRound.setText("RESUME ROUND");
                         thirdService.pauseMediaPlayer();
+                        Toast.makeText(getActivity(), "Paused Breathing Cycle",Toast.LENGTH_SHORT).show();
                     }else {
                         buttonPauseRound.setText("PAUSE ROUND");
                         thirdService.resumeMediaPlayer();
+                        Toast.makeText(getActivity(), "Resumed Breathing Cycle",Toast.LENGTH_SHORT).show();
                     }
 
                 }

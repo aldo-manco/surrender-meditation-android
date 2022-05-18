@@ -124,6 +124,7 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()) {
 
             case R.id.playShortSession:
+            case R.id.textRecoveryYogaShort:
 
                 stopPressed = false;
 
@@ -132,14 +133,15 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                     secondServiceBounded = false;
                 }
 
-                Toast.makeText(getActivity(), "www",Toast.LENGTH_LONG).show();
                 startFirstRound = new Intent(getActivity(), YogaService.class);
-                startFirstRound.putExtra("length", "short");
+                startFirstRound.putExtra("length", 0);
                 getActivity().bindService(startFirstRound, firstConnection, BIND_AUTO_CREATE);
+                Toast.makeText(getActivity(), "Starting Short Recovery Yoga",Toast.LENGTH_SHORT).show();
 
                 break;
 
             case R.id.playLongSession:
+            case R.id.textRecoveryYogaLong:
 
                 stopPressed = false;
 
@@ -149,22 +151,25 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                 }
 
                 startSecondRound = new Intent(getActivity(), YogaService.class);
-                startSecondRound.putExtra("length", "long");
+                startSecondRound.putExtra("length", 1);
                 getActivity().bindService(startSecondRound, secondConnection, BIND_AUTO_CREATE);
+                Toast.makeText(getActivity(), "Starting Extended Recovery Yoga",Toast.LENGTH_SHORT).show();
 
                 break;
 
-            case R.id.buttonStopRound:
+            case R.id.buttonStopYoga:
 
                 if (!stopPressed) {
 
                     if (firstServiceBounded) {
                         getActivity().unbindService(firstConnection);
                         firstServiceBounded = false;
+                        Toast.makeText(getActivity(), "Stopped Short Recovery Yoga",Toast.LENGTH_SHORT).show();
 
                     } else if (secondServiceBounded) {
                         getActivity().unbindService(secondConnection);
                         secondServiceBounded = false;
+                        Toast.makeText(getActivity(), "Stopped Extended Recovery Yoga",Toast.LENGTH_SHORT).show();
                     }
 
                     stopPressed = true;
@@ -172,16 +177,18 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
 
                 break;
 
-            case R.id.buttonPauseRound:
+            case R.id.buttonPauseYoga:
 
                 if (firstServiceBounded) {
 
                     if (firstService.isPlaying()){
                         buttonPauseRound.setText("RESUME ROUND");
                         firstService.pauseMediaPlayer();
+                        Toast.makeText(getActivity(), "Paused Short Recovery Yoga",Toast.LENGTH_SHORT).show();
                     }else {
-                        buttonPauseRound.setText("PAUSE ROUND");
+                        buttonPauseRound.setText(" PAUSE ROUND ");
                         firstService.resumeMediaPlayer();
+                        Toast.makeText(getActivity(), "Resumed Short Recovery Yoga",Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (secondServiceBounded) {
@@ -189,9 +196,11 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                     if (secondService.isPlaying()){
                         buttonPauseRound.setText("RESUME ROUND");
                         secondService.pauseMediaPlayer();
+                        Toast.makeText(getActivity(), "Paused Extended Recovery Yoga",Toast.LENGTH_SHORT).show();
                     }else {
-                        buttonPauseRound.setText("PAUSE ROUND");
+                        buttonPauseRound.setText(" PAUSE ROUND ");
                         secondService.resumeMediaPlayer();
+                        Toast.makeText(getActivity(), "Resumed Extended Recovery Yoga",Toast.LENGTH_SHORT).show();
                     }
 
                 }

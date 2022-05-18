@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <service android:name=".ui.wim_hof_breath_section.WimHofBreathService" />
+        <service android:name=".ui.yoga_section.YogaService"/>
     </application>
 
 </manifest>

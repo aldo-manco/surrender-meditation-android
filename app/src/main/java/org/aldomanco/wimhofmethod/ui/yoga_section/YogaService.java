@@ -21,14 +21,11 @@ public class YogaService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
 
-        player = MediaPlayer.create(this,
-                R.raw.recovery_yoga);
-
-        if (((String)intent.getExtras().get("length")).equals("short")){
+        if (((int)intent.getExtras().get("length")) == 0){
             player = MediaPlayer.create(this,
                     R.raw.fast_back_stretch);
 
-        }else if (((String)intent.getExtras().get("length")).equals("long")){
+        }else if (((int)intent.getExtras().get("length"))==1){
             player = MediaPlayer.create(this,
                     R.raw.recovery_yoga);
         }

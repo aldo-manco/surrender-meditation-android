@@ -128,6 +128,15 @@ public class WimHofBreathFragment extends Fragment implements View.OnClickListen
                 wimHofBreathViewModel.setTextView(MainActivity.numberOfRounds, textView);
 
                 int remaining = MainActivity.numberOfRounds % 3;
+
+                if (MainActivity.numberOfRounds % 2 == 0){
+                    remaining = 0;
+                } else if ((MainActivity.numberOfRounds+1) % 4 == 0){
+                    remaining = 2;
+                } else if ((MainActivity.numberOfRounds+1) % 4 != 0){
+                    remaining = 1;
+                }
+
                 stopPressed = false;
 
                 switch (remaining) {

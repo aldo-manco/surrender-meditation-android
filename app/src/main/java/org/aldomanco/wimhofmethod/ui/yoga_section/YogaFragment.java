@@ -136,7 +136,7 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                 startFirstRound = new Intent(getActivity(), YogaService.class);
                 startFirstRound.putExtra("length", 0);
                 getActivity().bindService(startFirstRound, firstConnection, BIND_AUTO_CREATE);
-                Toast.makeText(getActivity(), "Starting Short Recovery Yoga",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Starting Cleansing Shower",Toast.LENGTH_SHORT).show();
 
                 break;
 
@@ -153,7 +153,7 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                 startSecondRound = new Intent(getActivity(), YogaService.class);
                 startSecondRound.putExtra("length", 1);
                 getActivity().bindService(startSecondRound, secondConnection, BIND_AUTO_CREATE);
-                Toast.makeText(getActivity(), "Starting Extended Recovery Yoga",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Starting Cleansing Shower without Cleaning Phase",Toast.LENGTH_SHORT).show();
 
                 break;
 
@@ -164,12 +164,12 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                     if (firstServiceBounded) {
                         getActivity().unbindService(firstConnection);
                         firstServiceBounded = false;
-                        Toast.makeText(getActivity(), "Stopped Short Recovery Yoga",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Stopped Cleansing Shower",Toast.LENGTH_SHORT).show();
 
                     } else if (secondServiceBounded) {
                         getActivity().unbindService(secondConnection);
                         secondServiceBounded = false;
-                        Toast.makeText(getActivity(), "Stopped Extended Recovery Yoga",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Stopped Cleansing Shower without Cleaning Phase",Toast.LENGTH_SHORT).show();
                     }
 
                     stopPressed = true;
@@ -184,11 +184,11 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                     if (firstService.isPlaying()){
                         buttonPauseRound.setText("RESUME ROUND");
                         firstService.pauseMediaPlayer();
-                        Toast.makeText(getActivity(), "Paused Short Recovery Yoga",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Paused Cleansing Shower",Toast.LENGTH_SHORT).show();
                     }else {
                         buttonPauseRound.setText(" PAUSE ROUND ");
                         firstService.resumeMediaPlayer();
-                        Toast.makeText(getActivity(), "Resumed Short Recovery Yoga",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Resumed Cleansing Shower",Toast.LENGTH_SHORT).show();
                     }
 
                 } else if (secondServiceBounded) {
@@ -196,11 +196,11 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                     if (secondService.isPlaying()){
                         buttonPauseRound.setText("RESUME ROUND");
                         secondService.pauseMediaPlayer();
-                        Toast.makeText(getActivity(), "Paused Extended Recovery Yoga",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Paused Cleansing Shower without Cleaning Phase",Toast.LENGTH_SHORT).show();
                     }else {
                         buttonPauseRound.setText(" PAUSE ROUND ");
                         secondService.resumeMediaPlayer();
-                        Toast.makeText(getActivity(), "Resumed Extended Recovery Yoga",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Resumed Cleansing Shower without Cleaning Phase",Toast.LENGTH_SHORT).show();
                     }
 
                 }

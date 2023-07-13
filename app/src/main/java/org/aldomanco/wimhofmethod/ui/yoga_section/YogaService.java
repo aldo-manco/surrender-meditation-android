@@ -11,6 +11,8 @@ import android.widget.Toast;
 import org.aldomanco.wimhofmethod.MainActivity;
 import org.aldomanco.wimhofmethod.R;
 
+import java.io.IOException;
+
 public class YogaService extends Service {
 
     //creating a mediaplayer object
@@ -23,16 +25,23 @@ public class YogaService extends Service {
 
         if (((int)intent.getExtras().get("length")) == 0){
             player = MediaPlayer.create(this,
-                    R.raw.fast_back_stretch);
+                    R.raw.cleansing_shower);
 
         }else if (((int)intent.getExtras().get("length"))==1){
             player = MediaPlayer.create(this,
-                    R.raw.recovery_yoga);
+                    R.raw.cleansing_shower_without_cleaning_phase);
         }
 
         //setting loop play to true
         //this will make the ringtone continuously playing
         player.setLooping(true);
+
+        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer player) {
+                player.stop();
+            }
+        });
 
         //staring the player
         player.start();

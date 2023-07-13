@@ -10,9 +10,9 @@
         android:id="@+id/playShortSession"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#42a79e"
+        android:background="#2196F3"
         app:layout_constraintBottom_toTopOf="@id/text_dashboard"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/playLongSession"
@@ -26,9 +26,9 @@
         android:id="@+id/textRecoveryYogaShort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RECOVERY YOGA - SHORT VERSION"
-        android:textStyle="bold"
+        android:text="CLEANSING SHOWER"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/playShortSession"
         app:layout_constraintEnd_toEndOf="@+id/playShortSession"
         app:layout_constraintStart_toStartOf="@+id/playShortSession"
@@ -38,10 +38,11 @@
         android:id="@+id/textRecoveryYogaLong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RECOVERY YOGA - EXTENDED VERSION"
-        android:textStyle="bold"
-        android:textSize="20sp"
+        android:text="CLEANSING SHOWER\nWITHOUT\nCLEANING PHASE"
         android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/playLongSession"
         app:layout_constraintEnd_toEndOf="@+id/playLongSession"
         app:layout_constraintStart_toStartOf="@+id/playLongSession"

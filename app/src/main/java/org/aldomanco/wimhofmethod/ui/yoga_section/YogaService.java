@@ -17,6 +17,7 @@ public class YogaService extends Service {
 
     //creating a mediaplayer object
     private MediaPlayer player;
+    private boolean playOneTime = false;
 
     IBinder mBinder = new LocalBinderYoga();
 
@@ -34,17 +35,14 @@ public class YogaService extends Service {
 
         //setting loop play to true
         //this will make the ringtone continuously playing
-        player.setLooping(true);
+        player.setLooping(false);
 
-        player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer player) {
-                player.stop();
-            }
-        });
+        if (!playOneTime){
+            //staring the player
+            player.start();
+        }
 
-        //staring the player
-        player.start();
+        playOneTime = true;
 
         return mBinder;
     }

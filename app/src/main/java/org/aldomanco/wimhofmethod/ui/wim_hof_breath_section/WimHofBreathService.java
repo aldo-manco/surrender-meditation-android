@@ -12,6 +12,7 @@ public class WimHofBreathService extends Service {
 
     //creating a mediaplayer object
     private MediaPlayer player;
+    private boolean playOneTime = false;
 
     IBinder mBinder = new LocalBinder();
 
@@ -33,10 +34,14 @@ public class WimHofBreathService extends Service {
 
         //setting loop play to true
         //this will make the ringtone continuously playing
-        player.setLooping(true);
+        player.setLooping(false);
 
-        //staring the player
-        player.start();
+        if (!playOneTime){
+            //staring the player
+            player.start();
+        }
+
+        playOneTime = true;
 
         return mBinder;
     }

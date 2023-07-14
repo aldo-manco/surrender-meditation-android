@@ -31,12 +31,15 @@ import org.aldomanco.wimhofmethod.ui.wim_hof_breath_section.WimHofBreathViewMode
 
 import static android.content.Context.BIND_AUTO_CREATE;
 
+import java.util.Calendar;
+
 public class YogaFragment extends Fragment implements View.OnClickListener {
 
     private YogaViewModel yogaViewModel;
     private FragmentYogaSectionBinding binding;
 
-    private TextView textView;
+    private TextView textShower;
+    private TextView textShowerWithoutCleaningPhase;
 
     private ImageView playShortSession;
     private ImageView playLongSession;
@@ -65,11 +68,35 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
         firstServiceBounded = false;
         secondServiceBounded = false;
 
-        yogaViewModel =
-                new ViewModelProvider(this).get(YogaViewModel.class);
-
         binding = FragmentYogaSectionBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        textShower = root.findViewById(R.id.textRecoveryYogaShort);
+        textShowerWithoutCleaningPhase = root.findViewById(R.id.textRecoveryYogaLong);
+
+        Calendar calendar = Calendar.getInstance();
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+
+        // Set the text according to the current hour and day of the week
+        if (currentHour >= 4 && currentHour < 13) {
+            textShower.setText("SURYA CLEANSING SHOWER");
+            textShowerWithoutCleaningPhase.setText("SURYA CLEANSING SHOWER\nWITHOUT CLEANING PHASE");
+        } else if (currentHour >= 19 || currentHour < 4) {
+            textShowerWithoutCleaningPhase.setText("CHANDRA CLEANSING SHOWER\nWITHOUT CLEANING PHASE");
+            if (dayOfWeek == Calendar.SUNDAY) {
+                textShower.setText("SHAVE BEARD\n\nCHANDRA CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
+            } else if (dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
+                textShower.setText("CHANDRA CLEANSING SHOWER\n\nWASH HAIR");
+            } else {
+                textShower.setText("CHANDRA CLEANSING SHOWER");
+            }
+        } else {
+            textShower.setText("CLEANSING SHOWER");
+        }
+
+        yogaViewModel =
+                new ViewModelProvider(this).get(YogaViewModel.class);
 
         final TextView textView = binding.textDashboard;
         buttonStopRound = binding.buttonStopYoga;

@@ -76,36 +76,42 @@
             android:id="@+id/button5minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="05 Minutes" />
 
         <Button
             android:id="@+id/button10minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="10 Minutes" />
 
         <Button
             android:id="@+id/button15minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="15 Minutes" />
 
         <Button
             android:id="@+id/button20minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="20 Minutes"/>
 
         <Button
             android:id="@+id/button30minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="30 Minutes"/>
 
         <Button
             android:id="@+id/button40minutes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:text="40 Minutes"/>
 
     </GridLayout>

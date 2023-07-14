@@ -27,8 +27,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CLEANSING SHOWER"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/playShortSession"
         app:layout_constraintEnd_toEndOf="@+id/playShortSession"
         app:layout_constraintStart_toStartOf="@+id/playShortSession"
@@ -38,10 +40,10 @@
         android:id="@+id/textRecoveryYogaLong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CLEANSING SHOWER\nWITHOUT\nCLEANING PHASE"
+        android:text="CLEANSING SHOWER\nWITHOUT CLEANING PHASE"
         android:textColor="@color/white"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/playLongSession"
         app:layout_constraintEnd_toEndOf="@+id/playLongSession"
@@ -61,12 +63,16 @@
             android:id="@+id/buttonPauseYoga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:text="PAUSE SESSION" />
 
         <Button
             android:id="@+id/buttonStopYoga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:text=" STOP SESSION " />
 
     </LinearLayout>

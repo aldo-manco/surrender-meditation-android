@@ -85,7 +85,7 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
         } else if (currentHour >= 19 || currentHour < 4) {
             textShowerWithoutCleaningPhase.setText("CHANDRA CLEANSING SHOWER\nWITHOUT CLEANING PHASE");
             if (dayOfWeek == Calendar.SUNDAY) {
-                textShower.setText("SHAVE BEARD\n\nCHANDRA CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
+                textShower.setText("SHAVE BEARD\nSHAVE ARMPITS\nSHAVE PELVIS\n\nCHANDRA CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
             } else if (dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
                 textShower.setText("CHANDRA CLEANSING SHOWER\n\nWASH HAIR");
             } else {

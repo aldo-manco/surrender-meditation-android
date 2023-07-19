@@ -82,11 +82,20 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
         if (currentHour >= 4 && currentHour < 13) {
             textShower.setText("SURYA CLEANSING SHOWER");
             textShowerWithoutCleaningPhase.setText("SURYA CLEANSING SHOWER\nWITHOUT CLEANING PHASE");
-        } else if (currentHour >= 19 || currentHour < 4) {
+        } else if (currentHour >= 19) {
             textShowerWithoutCleaningPhase.setText("CHANDRA CLEANSING SHOWER\nWITHOUT CLEANING PHASE");
             if (dayOfWeek == Calendar.SUNDAY) {
                 textShower.setText("SHAVE BEARD\nSHAVE ARMPITS\nSHAVE PELVIS\n\nCHANDRA CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
             } else if (dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
+                textShower.setText("CHANDRA CLEANSING SHOWER\n\nWASH HAIR");
+            } else {
+                textShower.setText("CHANDRA CLEANSING SHOWER");
+            }
+        } else if (currentHour < 4) {
+            textShowerWithoutCleaningPhase.setText("CHANDRA CLEANSING SHOWER\nWITHOUT CLEANING PHASE");
+            if (dayOfWeek == Calendar.MONDAY) {
+                textShower.setText("SHAVE BEARD\nSHAVE ARMPITS\nSHAVE PELVIS\n\nCHANDRA CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
+            } else if (dayOfWeek == Calendar.WEDNESDAY || dayOfWeek == Calendar.FRIDAY) {
                 textShower.setText("CHANDRA CLEANSING SHOWER\n\nWASH HAIR");
             } else {
                 textShower.setText("CHANDRA CLEANSING SHOWER");

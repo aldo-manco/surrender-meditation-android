@@ -12,6 +12,7 @@ import org.aldomanco.wimhofmethod.MainActivity;
 import org.aldomanco.wimhofmethod.R;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 public class YogaService extends Service {
 
@@ -24,13 +25,31 @@ public class YogaService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
 
-        if (((int)intent.getExtras().get("length")) == 0){
-            player = MediaPlayer.create(this,
-                    R.raw.cleansing_shower);
+        Calendar calendar = Calendar.getInstance();
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
 
-        }else if (((int)intent.getExtras().get("length"))==1){
-            player = MediaPlayer.create(this,
-                    R.raw.cleansing_shower_without_cleaning_phase);
+        if (currentHour >= 4 && currentHour < 13) {
+
+            if (((int)intent.getExtras().get("length")) == 0){
+                player = MediaPlayer.create(this,
+                        R.raw.surya_cleansing_shower);
+
+            }else if (((int)intent.getExtras().get("length"))==1){
+                player = MediaPlayer.create(this,
+                        R.raw.surya_cleansing_shower_without_cleaning_phase);
+            }
+
+        } else {
+
+            if (((int)intent.getExtras().get("length")) == 0){
+                player = MediaPlayer.create(this,
+                        R.raw.chandra_cleansing_shower);
+
+            }else if (((int)intent.getExtras().get("length"))==1){
+                player = MediaPlayer.create(this,
+                        R.raw.chandra_cleansing_shower_without_cleaning_phase);
+            }
         }
 
         //setting loop play to true

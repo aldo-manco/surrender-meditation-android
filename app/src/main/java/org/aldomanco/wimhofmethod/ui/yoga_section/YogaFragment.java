@@ -79,29 +79,27 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
         int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
 
         // Set the text according to the current hour and day of the week
-        if (currentHour >= 4 && currentHour < 13) {
-            textShower.setText("SURYA CLEANSING SHOWER");
-            textShowerWithoutCleaningPhase.setText("SURYA CLEANSING SHOWER\nWITHOUT CLEANING PHASE");
-        } else if (currentHour >= 19) {
-            textShowerWithoutCleaningPhase.setText("CHANDRA CLEANSING SHOWER\nWITHOUT CLEANING PHASE");
+        if (currentHour >= 4 && currentHour < 18) {
+            textShower.setText("BODY CLEANSING SHOWER");
+            textShowerWithoutCleaningPhase.setText("CLEANSING SHOWER");
+        } else if (currentHour >= 18) {
+            textShowerWithoutCleaningPhase.setText("CLEANSING SHOWER");
             if (dayOfWeek == Calendar.SUNDAY) {
-                textShower.setText("SHAVE BEARD\nSHAVE ARMPITS\nSHAVE PELVIS\n\nCHANDRA CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
+                textShower.setText("SHAVE BEARD\nSHAVE ARMPITS\nSHAVE PELVIS\n\nHAIR CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
             } else if (dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
-                textShower.setText("CHANDRA CLEANSING SHOWER\n\nWASH HAIR");
+                textShower.setText("HAIR CLEANSING SHOWER\n\nWASH HAIR");
             } else {
-                textShower.setText("CHANDRA CLEANSING SHOWER");
+                textShower.setText("HAIR CLEANSING SHOWER");
             }
         } else if (currentHour < 4) {
-            textShowerWithoutCleaningPhase.setText("CHANDRA CLEANSING SHOWER\nWITHOUT CLEANING PHASE");
+            textShowerWithoutCleaningPhase.setText("CLEANSING SHOWER");
             if (dayOfWeek == Calendar.MONDAY) {
-                textShower.setText("SHAVE BEARD\nSHAVE ARMPITS\nSHAVE PELVIS\n\nCHANDRA CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
+                textShower.setText("SHAVE BEARD\nSHAVE ARMPITS\nSHAVE PELVIS\n\nHAIR CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
             } else if (dayOfWeek == Calendar.WEDNESDAY || dayOfWeek == Calendar.FRIDAY) {
-                textShower.setText("CHANDRA CLEANSING SHOWER\n\nWASH HAIR");
+                textShower.setText("HAIR CLEANSING SHOWER\n\nWASH HAIR");
             } else {
-                textShower.setText("CHANDRA CLEANSING SHOWER");
+                textShower.setText("HAIR CLEANSING SHOWER");
             }
-        } else {
-            textShower.setText("CLEANSING SHOWER");
         }
 
         yogaViewModel =

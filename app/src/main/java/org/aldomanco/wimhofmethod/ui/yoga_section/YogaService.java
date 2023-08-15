@@ -37,7 +37,7 @@ public class YogaService extends Service {
 
             }else if (((int)intent.getExtras().get("length"))==1){
                 player = MediaPlayer.create(this,
-                        R.raw.cleansing_shower);
+                        R.raw.wim_hof_cleansing_shower);
             }
 
         } else {
@@ -48,7 +48,7 @@ public class YogaService extends Service {
 
             }else if (((int)intent.getExtras().get("length"))==1){
                 player = MediaPlayer.create(this,
-                        R.raw.cleansing_shower);
+                        R.raw.contrast_cleansing_shower);
             }
         }
 

@@ -83,22 +83,26 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
             textShower.setText("BODY CLEANSING SHOWER");
             textShowerWithoutCleaningPhase.setText("WIM HOF CLEANSING SHOWER");
         } else if (currentHour >= 18) {
-            textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
             if (dayOfWeek == Calendar.SUNDAY) {
-                textShower.setText("SHAVE BODY\n\nHAIR CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
+                textShower.setText("BODY SHAVING\nHAIR CLEANSING SHOWER\nHAIR CURLS DEFINITION\n\nCLICK HERE");
+                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
             } else if (dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
-                textShower.setText("HAIR CLEANSING SHOWER\n\nWASH HAIR");
+                textShower.setText("HAIR CLEANSING SHOWER\n\nCLICK HERE");
+                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
             } else {
                 textShower.setText("HAIR CLEANSING SHOWER");
+                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER\n\nCLICK HERE");
             }
         } else if (currentHour < 4) {
-            textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
             if (dayOfWeek == Calendar.MONDAY) {
-                textShower.setText("SHAVE BODY\n\nHAIR CLEANSING SHOWER\n\nWASH HAIR\nDEFINE CURLS");
+                textShower.setText("BODY SHAVING\nHAIR CLEANSING SHOWER\nHAIR CURLS DEFINITION\n\nCLICK HERE");
+                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
             } else if (dayOfWeek == Calendar.WEDNESDAY || dayOfWeek == Calendar.FRIDAY) {
-                textShower.setText("HAIR CLEANSING SHOWER\n\nWASH HAIR");
+                textShower.setText("HAIR CLEANSING SHOWER\n\nCLICK HERE");
+                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
             } else {
                 textShower.setText("HAIR CLEANSING SHOWER");
+                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER\n\nCLICK HERE");
             }
         }
 

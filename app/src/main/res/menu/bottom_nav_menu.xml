@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_wim_hof_method"
-        android:icon="@drawable/ic_wim_hof_inner_power"
-        android:title="@string/title_wim_hof_breath" />
-
-    <item
         android:id="@+id/navigation_yoga"
         android:icon="@drawable/ic_baseline_shower_24"
         android:title="@string/title_yoga" />
+
+    <item
+        android:id="@+id/navigation_wim_hof_method"
+        android:icon="@drawable/ic_wim_hof_inner_power"
+        android:title="@string/title_wim_hof_breath" />
 
     <item
         android:id="@+id/navigation_prana_breath"

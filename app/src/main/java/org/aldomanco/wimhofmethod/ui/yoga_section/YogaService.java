@@ -37,14 +37,14 @@ public class YogaService extends Service {
 
             }else if (((int)intent.getExtras().get("length"))==1){
                 player = MediaPlayer.create(this,
-                        R.raw.wim_hof_cleansing_shower);
+                        R.raw.hair_body_cleansing_shower);
             }
 
         } else {
 
             if (((int)intent.getExtras().get("length")) == 0){
                 player = MediaPlayer.create(this,
-                        R.raw.hair_cleansing_shower);
+                        R.raw.wim_hof_cleansing_shower);
 
             }else if (((int)intent.getExtras().get("length"))==1){
                 player = MediaPlayer.create(this,

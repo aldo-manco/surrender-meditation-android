@@ -59,6 +59,10 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
     YogaService firstService;
     YogaService secondService;
 
+    private Calendar calendar = Calendar.getInstance();
+    private int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+    private int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -74,36 +78,19 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
         textShower = root.findViewById(R.id.textRecoveryYogaShort);
         textShowerWithoutCleaningPhase = root.findViewById(R.id.textRecoveryYogaLong);
 
-        Calendar calendar = Calendar.getInstance();
-        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
-
         // Set the text according to the current hour and day of the week
         if (currentHour >= 4 && currentHour < 18) {
-            textShower.setText("BODY CLEANSING SHOWER");
-            textShowerWithoutCleaningPhase.setText("WIM HOF CLEANSING SHOWER");
-        } else if (currentHour >= 18) {
-            if (dayOfWeek == Calendar.SUNDAY) {
-                textShower.setText("BODY SHAVING\nHAIR CLEANSING SHOWER\nHAIR CURLS DEFINITION\n\nCLICK HERE");
-                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
-            } else if (dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
-                textShower.setText("HAIR CLEANSING SHOWER\n\nCLICK HERE");
-                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
+            if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.WEDNESDAY || dayOfWeek == Calendar.FRIDAY) {
+                textShower.setText("BODY CLEANSING SHOWER");
+                textShowerWithoutCleaningPhase.setText("HAIR/BODY CLEANSING SHOWER\n\nDO THIS");
             } else {
-                textShower.setText("HAIR CLEANSING SHOWER");
-                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER\n\nCLICK HERE");
+                textShower.setText("BODY CLEANSING SHOWER\n\nDO THIS");
+                textShowerWithoutCleaningPhase.setText("HAIR/BODY CLEANSING SHOWER");
             }
-        } else if (currentHour < 4) {
-            if (dayOfWeek == Calendar.MONDAY) {
-                textShower.setText("BODY SHAVING\nHAIR CLEANSING SHOWER\nHAIR CURLS DEFINITION\n\nCLICK HERE");
-                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
-            } else if (dayOfWeek == Calendar.WEDNESDAY || dayOfWeek == Calendar.FRIDAY) {
-                textShower.setText("HAIR CLEANSING SHOWER\n\nCLICK HERE");
-                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
-            } else {
-                textShower.setText("HAIR CLEANSING SHOWER");
-                textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER\n\nCLICK HERE");
-            }
+
+        } else {
+            textShower.setText("WIM HOF CLEANSING SHOWER");
+            textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
         }
 
         yogaViewModel =
@@ -174,7 +161,7 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                 startFirstRound = new Intent(getActivity(), YogaService.class);
                 startFirstRound.putExtra("length", 0);
                 getActivity().bindService(startFirstRound, firstConnection, BIND_AUTO_CREATE);
-                Toast.makeText(getActivity(), "Starting Cleansing Shower",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Cleansing Shower Started", Toast.LENGTH_LONG).show();
 
                 break;
 
@@ -191,7 +178,7 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                 startSecondRound = new Intent(getActivity(), YogaService.class);
                 startSecondRound.putExtra("length", 1);
                 getActivity().bindService(startSecondRound, secondConnection, BIND_AUTO_CREATE);
-                Toast.makeText(getActivity(), "Starting Cleansing Shower without Cleaning Phase",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Cleansing Shower Started", Toast.LENGTH_LONG).show();
 
                 break;
 
@@ -202,12 +189,12 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
                     if (firstServiceBounded) {
                         getActivity().unbindService(firstConnection);
                         firstServiceBounded = false;
-                        Toast.makeText(getActivity(), "Stopped Cleansing Shower",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Cleansing Shower Stopped", Toast.LENGTH_LONG).show();
 
                     } else if (secondServiceBounded) {
                         getActivity().unbindService(secondConnection);
                         secondServiceBounded = false;
-                        Toast.makeText(getActivity(), "Stopped Cleansing Shower without Cleaning Phase",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Cleansing Shower Stopped", Toast.LENGTH_LONG).show();
                     }
 
                     stopPressed = true;
@@ -219,26 +206,26 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
 
                 if (firstServiceBounded) {
 
-                    if (firstService.isPlaying()){
+                    if (firstService.isPlaying()) {
                         buttonPauseRound.setText("RESUME ROUND");
                         firstService.pauseMediaPlayer();
-                        Toast.makeText(getActivity(), "Paused Cleansing Shower",Toast.LENGTH_SHORT).show();
-                    }else {
+                        Toast.makeText(getActivity(), "Cleansing Shower Resumed", Toast.LENGTH_LONG).show();
+                    } else {
                         buttonPauseRound.setText(" PAUSE ROUND ");
                         firstService.resumeMediaPlayer();
-                        Toast.makeText(getActivity(), "Resumed Cleansing Shower",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Cleansing Shower Paused", Toast.LENGTH_LONG).show();
                     }
 
                 } else if (secondServiceBounded) {
 
-                    if (secondService.isPlaying()){
+                    if (secondService.isPlaying()) {
                         buttonPauseRound.setText("RESUME ROUND");
                         secondService.pauseMediaPlayer();
-                        Toast.makeText(getActivity(), "Paused Cleansing Shower without Cleaning Phase",Toast.LENGTH_SHORT).show();
-                    }else {
+                        Toast.makeText(getActivity(), "Cleansing Shower Resumed", Toast.LENGTH_LONG).show();
+                    } else {
                         buttonPauseRound.setText(" PAUSE ROUND ");
                         secondService.resumeMediaPlayer();
-                        Toast.makeText(getActivity(), "Resumed Cleansing Shower without Cleaning Phase",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Cleansing Shower Paused", Toast.LENGTH_LONG).show();
                     }
 
                 }

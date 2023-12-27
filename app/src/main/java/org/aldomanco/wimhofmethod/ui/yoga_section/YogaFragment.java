@@ -80,7 +80,7 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
 
         // Set the text according to the current hour and day of the week
         if (currentHour >= 4 && currentHour < 18) {
-            if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.WEDNESDAY || dayOfWeek == Calendar.FRIDAY) {
+            if (dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
                 textShower.setText("BODY CLEANSING SHOWER");
                 textShowerWithoutCleaningPhase.setText("HAIR/BODY CLEANSING SHOWER\n\nDO THIS");
             } else {

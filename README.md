@@ -1,2 +1,1 @@
-# wim-hof-method-android
- 
+Inner Power Android App

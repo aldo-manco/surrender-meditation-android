@@ -89,7 +89,7 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
             }
 
         } else {
-            textShower.setText("WIM HOF CLEANSING SHOWER");
+            textShower.setText("POWER CLEANSING SHOWER");
             textShowerWithoutCleaningPhase.setText("CONTRAST CLEANSING SHOWER");
         }
 

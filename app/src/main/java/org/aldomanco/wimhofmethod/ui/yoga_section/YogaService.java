@@ -44,7 +44,7 @@ public class YogaService extends Service {
 
             if (((int)intent.getExtras().get("length")) == 0){
                 player = MediaPlayer.create(this,
-                        R.raw.wim_hof_cleansing_shower);
+                        R.raw.power_cleansing_shower);
 
             }else if (((int)intent.getExtras().get("length"))==1){
                 player = MediaPlayer.create(this,

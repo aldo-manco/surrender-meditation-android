@@ -21,15 +21,15 @@ public class WimHofBreathService extends Service {
 
         if ((int)intent.getExtras().get("remaining") == 0){
             player = MediaPlayer.create(this,
-                    R.raw.round1);
+                    R.raw.wim_hof_method_round_1);
 
         }else if ((int)intent.getExtras().get("remaining") == 1){
             player = MediaPlayer.create(this,
-                    R.raw.round2edited);
+                    R.raw.wim_hof_method_round_2);
 
         }else if ((int)intent.getExtras().get("remaining") == 2){
             player = MediaPlayer.create(this,
-                    R.raw.round3edited);
+                    R.raw.wim_hof_method_round_3);
         }
 
         //setting loop play to true

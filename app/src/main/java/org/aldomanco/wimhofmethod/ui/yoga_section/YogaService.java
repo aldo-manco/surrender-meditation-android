@@ -33,11 +33,11 @@ public class YogaService extends Service {
 
             if (((int)intent.getExtras().get("length")) == 0){
                 player = MediaPlayer.create(this,
-                        R.raw.hair_body_cleansing_shower);
+                        R.raw.restorative_cleansing_shower);
 
             }else if (((int)intent.getExtras().get("length"))==1){
                 player = MediaPlayer.create(this,
-                        R.raw.power_cleansing_shower);
+                        R.raw.pure_cleansing_shower);
             }
 
         } else {

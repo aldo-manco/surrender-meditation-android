@@ -79,18 +79,12 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
         textShowerWithoutCleaningPhase = root.findViewById(R.id.textRecoveryYogaLong);
 
         if (currentHour >= 4 && currentHour < 18) {
-
-            if (dayOfWeek == Calendar.SUNDAY || dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
-                textShower.setText("HAIR CLEANSING SHOWER");
-            } else {
-                textShower.setText("BODY CLEANSING SHOWER");
-            }
-
+            textShower.setText("RESTORATIVE\nCLEANSING SHOWER");
+            textShowerWithoutCleaningPhase.setText("PURE\nCLEANSING SHOWER");
         } else {
-            textShower.setText("CONTRAST CLEANSING SHOWER");
+            textShower.setText("CONTRAST\nCLEANSING SHOWER");
+            textShowerWithoutCleaningPhase.setText("POWER\nCLEANSING SHOWER");
         }
-
-        textShowerWithoutCleaningPhase.setText("POWER CLEANSING SHOWER");
 
         yogaViewModel =
                 new ViewModelProvider(this).get(YogaViewModel.class);

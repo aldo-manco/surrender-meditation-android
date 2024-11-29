@@ -78,13 +78,33 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
         textShower = root.findViewById(R.id.textRecoveryYogaShort);
         textShowerWithoutCleaningPhase = root.findViewById(R.id.textRecoveryYogaLong);
 
+        String stringShower = "";
+        String stringShowerWithoutCleaningPhase = "";
+
         if (currentHour >= 4 && currentHour < 18) {
-            textShower.setText("RESTORATIVE\nCLEANSING SHOWER");
-            textShowerWithoutCleaningPhase.setText("PURE\nCLEANSING SHOWER");
+            stringShower = "RESTORATIVE\nCLEANSING SHOWER";
+            stringShowerWithoutCleaningPhase = "PURE\nCLEANSING SHOWER";
+            String stringShowerMode = "";
+
+            if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.WEDNESDAY) {
+                stringShowerMode = "\n[BODY]";
+            } else if (dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
+                stringShowerMode = "\n[HAIR]";
+            } else if (dayOfWeek == Calendar.FRIDAY) {
+                stringShowerMode = "\n[FACE & UPPER\nBODY CARE]";
+            } else if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
+                stringShowerMode = "\n[BODY/HAIR]";
+            }
+
+            stringShower += stringShowerMode;
+            stringShowerWithoutCleaningPhase += stringShowerMode;
         } else {
-            textShower.setText("CONTRAST\nCLEANSING SHOWER");
-            textShowerWithoutCleaningPhase.setText("POWER\nCLEANSING SHOWER");
+            stringShower = "CONTRAST\nCLEANSING SHOWER";
+            stringShowerWithoutCleaningPhase = "POWER\nCLEANSING SHOWER";
         }
+
+        textShower.setText(stringShower);
+        textShowerWithoutCleaningPhase.setText(stringShowerWithoutCleaningPhase);
 
         yogaViewModel =
                 new ViewModelProvider(this).get(YogaViewModel.class);

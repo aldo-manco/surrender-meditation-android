@@ -84,20 +84,6 @@ public class YogaFragment extends Fragment implements View.OnClickListener {
         if (currentHour >= 4 && currentHour < 18) {
             stringShower = "RESTORATIVE\nCLEANSING SHOWER";
             stringShowerWithoutCleaningPhase = "PURE\nCLEANSING SHOWER";
-            String stringShowerMode = "";
-
-            if (dayOfWeek == Calendar.MONDAY || dayOfWeek == Calendar.WEDNESDAY) {
-                stringShowerMode = "\n[BODY]";
-            } else if (dayOfWeek == Calendar.TUESDAY || dayOfWeek == Calendar.THURSDAY) {
-                stringShowerMode = "\n[HAIR]";
-            } else if (dayOfWeek == Calendar.FRIDAY) {
-                stringShowerMode = "\n[FACE & UPPER\nBODY CARE]";
-            } else if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
-                stringShowerMode = "\n[BODY/HAIR]";
-            }
-
-            stringShower += stringShowerMode;
-            stringShowerWithoutCleaningPhase += stringShowerMode;
         } else {
             stringShower = "CONTRAST\nCLEANSING SHOWER";
             stringShowerWithoutCleaningPhase = "POWER\nCLEANSING SHOWER";

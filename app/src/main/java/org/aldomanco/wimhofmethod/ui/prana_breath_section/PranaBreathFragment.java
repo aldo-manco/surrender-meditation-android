@@ -112,8 +112,8 @@ public class PranaBreathFragment extends Fragment implements View.OnClickListene
             timeLeft.setTextColor(getResources().getColor(R.color.white));
         }
 
-        setTimer.setMax(1152);
-        setTimer.setProgress(1152);
+        setTimer.setMax(288);
+        setTimer.setProgress(288);
 
         setTimer.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 

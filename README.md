@@ -1,1 +1,1 @@
-Inner Power Android App
+Yoshi Android App
